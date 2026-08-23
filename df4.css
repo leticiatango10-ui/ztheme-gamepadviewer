@@ -1,0 +1,181 @@
+/*
+DriverFrank Fix V4
+Upload these 4 files to the SAME GitHub repository:
+- df4.css
+- df4-base.png
+- df4-mask.png
+- df4-stick.png
+
+Use skin: PlayStation 4
+*/
+
+.edit .controller.ds4,
+.controller.ds4.edit,
+.edit.controller.ds4,
+.controller.edit {
+    width: 806px !important;
+    height: 598px !important;
+    background-image: url("https://cdn.jsdelivr.net/gh/leticiatango10-ui/ztheme-gamepadviewer@main/df4-base.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: 0 0 !important;
+    background-size: 806px 598px !important;
+    background-color: transparent !important;
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* flowing glow only on green parts */
+.edit .controller.ds4::after,
+.controller.ds4.edit::after,
+.edit.controller.ds4::after,
+.controller.edit::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 806px !important;
+    height: 598px !important;
+    pointer-events: none !important;
+    z-index: 30 !important;
+
+    background: linear-gradient(
+        120deg,
+        rgba(20,100,30,.04) 0%,
+        rgba(60,255,70,.10) 20%,
+        rgba(205,255,180,.90) 42%,
+        rgba(80,255,175,.92) 50%,
+        rgba(65,255,70,.18) 68%,
+        rgba(20,100,30,.04) 100%
+    ) !important;
+    background-size: 320% 320% !important;
+
+    -webkit-mask-image: url("https://cdn.jsdelivr.net/gh/leticiatango10-ui/ztheme-gamepadviewer@main/df4-mask.png") !important;
+    -webkit-mask-repeat: no-repeat !important;
+    -webkit-mask-size: 806px 598px !important;
+    mask-image: url("https://cdn.jsdelivr.net/gh/leticiatango10-ui/ztheme-gamepadviewer@main/df4-mask.png") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 806px 598px !important;
+
+    mix-blend-mode: screen !important;
+    filter:
+        drop-shadow(0 0 4px rgba(150,255,100,.95))
+        drop-shadow(0 0 11px rgba(55,255,100,.72))
+        drop-shadow(0 0 22px rgba(30,205,90,.42)) !important;
+
+    animation: df4Flow 2.8s linear infinite !important;
+}
+
+@keyframes df4Flow {
+    0% { background-position: 170% -15%; opacity: .45; }
+    45% { opacity: 1; }
+    100% { background-position: -90% 115%; opacity: .55; }
+}
+
+/* sticks */
+.edit .stick,
+.controller.ds4.edit .stick {
+    -webkit-mask: none !important;
+    mask: none !important;
+    background-image: url("https://cdn.jsdelivr.net/gh/leticiatango10-ui/ztheme-gamepadviewer@main/df4-stick.png") !important;
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 94px 94px !important;
+    width: 94px !important;
+    height: 94px !important;
+    border-radius: 50% !important;
+    filter: drop-shadow(0 0 5px rgba(80,255,80,.38)) !important;
+}
+
+.edit .stick.pressed,
+.controller.ds4.edit .stick.pressed {
+    filter:
+        brightness(1.12)
+        drop-shadow(0 0 8px rgba(160,255,110,.95))
+        drop-shadow(0 0 17px rgba(55,255,100,.72)) !important;
+}
+
+/* native overlays transparent until pressed */
+.edit .button,
+.edit .face,
+.edit .bumper,
+.edit .trigger,
+.edit .back,
+.edit .start,
+.edit .meta,
+.edit .touchpad,
+.controller.ds4.edit .button,
+.controller.ds4.edit .face,
+.controller.ds4.edit .bumper,
+.controller.ds4.edit .trigger,
+.controller.ds4.edit .back,
+.controller.ds4.edit .start,
+.controller.ds4.edit .meta,
+.controller.ds4.edit .touchpad {
+    background-image: none !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+}
+
+/* face buttons */
+.edit .button.pressed,
+.controller.ds4.edit .button.pressed {
+    border-radius: 50% !important;
+    background: rgba(130,255,105,.12) !important;
+    box-shadow:
+        0 0 8px 3px rgba(185,255,130,.92),
+        0 0 18px 6px rgba(45,255,85,.55) !important;
+}
+
+/* d-pad directions */
+.edit .face.pressed,
+.controller.ds4.edit .face.pressed {
+    background: rgba(120,255,80,.18) !important;
+    box-shadow:
+        0 0 7px 2px rgba(170,255,110,.90),
+        0 0 15px 4px rgba(50,255,80,.48) !important;
+    border-radius: 10px !important;
+}
+
+/* share/options/meta/touch */
+.edit .back.pressed,
+.edit .start.pressed,
+.edit .meta.pressed,
+.edit .touchpad.pressed,
+.controller.ds4.edit .back.pressed,
+.controller.ds4.edit .start.pressed,
+.controller.ds4.edit .meta.pressed,
+.controller.ds4.edit .touchpad.pressed {
+    background: rgba(100,255,80,.12) !important;
+    box-shadow: 0 0 14px 4px rgba(85,255,80,.70) !important;
+}
+
+/* L1/R1 */
+.edit .bumper.pressed,
+.controller.ds4.edit .bumper.pressed {
+    background: rgba(100,255,80,.12) !important;
+    box-shadow:
+        0 0 10px 3px rgba(160,255,120,.80),
+        0 0 18px 6px rgba(55,255,100,.48) !important;
+    border-radius: 18px !important;
+}
+
+/* L2/R2 - explicit selectors so they appear when pressed */
+.edit .trigger,
+.controller.ds4.edit .trigger {
+    border-radius: 20px !important;
+}
+
+.edit .trigger.pressed,
+.edit .trigger.left.pressed,
+.edit .trigger.right.pressed,
+.controller.ds4.edit .trigger.pressed,
+.controller.ds4.edit .trigger.left.pressed,
+.controller.ds4.edit .trigger.right.pressed {
+    background: rgba(120,255,95,.16) !important;
+    box-shadow:
+        0 0 12px 4px rgba(185,255,130,.95),
+        0 0 22px 8px rgba(45,255,85,.60) !important;
+    opacity: 1 !important;
+    border-radius: 20px !important;
+    filter: brightness(1.12) !important;
+}
